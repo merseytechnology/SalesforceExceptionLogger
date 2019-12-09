@@ -12,6 +12,7 @@ The approach is quite simple and straightforward.
 I have created a custom object called Exception Logger in which I will save the exception related data.
 
 So, I have written a class named LogException which extends the apex Exception class. Here I create five properties to hold the various data including the exception data.
+```
 public class LogException extends Exception {
     public String ModuleName {get; set;}
     public String StackTrace {get; set;}
@@ -93,11 +94,16 @@ public class LogException extends Exception {
     }
 
 }
+```
 You can see, I have implemented the method chaining here to make it coding friendly as the developer will use this block of code. Though, I believe the property names are self-explanatory let me briefly discuss some of the class properties and methods.
+
 ModuleName: Actually this is an optional property. I create this to to differentiate the logs for a module of the project. For example, I have used the logger in a feature which implements the docusign functionality. In that case, I would like to set the moduleName=’Docusign’
+
 ExtractExceptionData(): This method extracts all the necessary exception info.
+
 Now, come to the main point. How to log the exception?
 I have created a test class to depict the uses of the LogException class.
+```
 public class LogExceptionTest {
 
     public static void test1()
@@ -131,7 +137,5 @@ public class LogExceptionTest {
 
     }
 }
-So, to log the exception in the custom object, one needs to have call the new LogException() with setting the optional Module and ExceptionCause in any order.
-So the result is
-
-You can see every detail here in the logger and can easily add a trigger when an exception gets inserted to the object.
+```
+So, to log the exception in the custom object, one needs to have call the new LogException() with setting the optional Module and ExceptionCause in any order. So the result is you can see every detail here in the logger and can easily add a trigger when an exception gets inserted to the object.
